@@ -1,0 +1,287 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    background: #07111f;
+    font-family: "Poppins", sans-serif;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+}
+
+/* CONTENEDOR */
+
+.contenedor {
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+    z-index: 10;
+
+    padding: 20px;
+}
+
+/* CORAZÓN */
+
+.corazon {
+    width: 280px;
+    height: 280px;
+
+    position: relative;
+
+    background: #f20044;
+
+    transform: rotate(-45deg);
+
+    box-shadow:
+        0 0 25px #f20044,
+        0 0 60px #f20044,
+        0 0 100px rgba(242, 0, 68, 0.7);
+
+    animation: latido 1.2s infinite;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Círculos superiores */
+
+.corazon::before,
+.corazon::after {
+    content: "";
+
+    position: absolute;
+
+    width: 280px;
+    height: 280px;
+
+    background: #f20044;
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 25px #f20044,
+        0 0 60px #f20044;
+}
+
+.corazon::before {
+    top: -140px;
+    left: 0;
+}
+
+.corazon::after {
+    top: 0;
+    left: 140px;
+}
+
+/* MENSAJE */
+
+.mensaje {
+    position: absolute;
+
+    width: 230px;
+
+    color: white;
+
+    font-size: 14px;
+    line-height: 1.5;
+
+    text-align: center;
+
+    font-weight: 400;
+
+    z-index: 20;
+
+    transform: rotate(45deg);
+
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+/* ANIMACIÓN DEL CORAZÓN */
+
+@keyframes latido {
+
+    0% {
+        transform: rotate(-45deg) scale(1);
+    }
+
+    50% {
+        transform: rotate(-45deg) scale(1.08);
+    }
+
+    100% {
+        transform: rotate(-45deg) scale(1);
+    }
+}
+
+/* AUDIO */
+
+.audio-container {
+    position: relative;
+
+    z-index: 30;
+
+    margin-top: 110px;
+
+    width: min(90vw, 400px);
+
+    display: flex;
+    justify-content: center;
+}
+
+audio {
+    width: 100%;
+
+    filter:
+        drop-shadow(0 0 10px #f20044)
+        drop-shadow(0 0 20px rgba(242, 0, 68, 0.5));
+}
+
+/* CONFETI */
+
+.confetti {
+    position: fixed;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    pointer-events: none;
+
+    overflow: hidden;
+
+    z-index: 5;
+}
+
+.confetti span {
+    position: absolute;
+
+    top: -20px;
+
+    width: 7px;
+    height: 13px;
+
+    border-radius: 1px;
+
+    animation: caer linear infinite;
+}
+
+@keyframes caer {
+
+    0% {
+        transform:
+            translateY(-20px)
+            rotate(0deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform:
+            translateY(110vh)
+            rotate(720deg);
+        opacity: 0;
+    }
+}
+
+/* ================================= */
+/* CELULARES */
+/* ================================= */
+
+@media (max-width: 600px) {
+
+    body {
+        overflow: hidden;
+    }
+
+    .contenedor {
+        padding: 15px;
+    }
+
+    .corazon {
+        width: 190px;
+        height: 190px;
+    }
+
+    .corazon::before,
+    .corazon::after {
+        width: 190px;
+        height: 190px;
+    }
+
+    .corazon::before {
+        top: -95px;
+    }
+
+    .corazon::after {
+        left: 95px;
+    }
+
+    .mensaje {
+        width: 160px;
+
+        font-size: 10px;
+
+        line-height: 1.35;
+    }
+
+    .audio-container {
+        margin-top: 75px;
+
+        width: 92vw;
+    }
+}
+
+/* ================================= */
+/* CELULARES MUY PEQUEÑOS */
+/* ================================= */
+
+@media (max-width: 380px) {
+
+    .corazon {
+        width: 165px;
+        height: 165px;
+    }
+
+    .corazon::before,
+    .corazon::after {
+        width: 165px;
+        height: 165px;
+    }
+
+    .corazon::before {
+        top: -82px;
+    }
+
+    .corazon::after {
+        left: 82px;
+    }
+
+    .mensaje {
+        width: 140px;
+        font-size: 9px;
+    }
+
+    .audio-container {
+        margin-top: 65px;
+    }
+}
